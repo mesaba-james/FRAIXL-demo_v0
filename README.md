@@ -69,13 +69,3 @@ Streamlit dependencies. They could be:
 
 For the v1 demonstrator, we use the Anthropic SDK directly from
 Streamlit; MCP is the right move if you want multiple consumers.
-
-## Notes for David
-
-A few things worth highlighting:
-
-- **All thresholds live in the calibration profile** (`fram_metadata.CalibrationProfile`), not the topology. Adjustable from the sidebar.
-- **Thresholds are PROVISIONAL.** WP4 of your proposal calls for calibration against reviewed normal landings before treating discrepancies as meaningful. The app prominently flags this.
-- **Touchdown detection** uses AIR/GROUND transition + radalt cross-check — addressing the proxy gap you flagged in v0.3.
-- **Gear-down logic** revealed an interesting FDR quirk on this dataset (GEAR LEVER UP=1 with the aircraft clearly extended below 1000ft AGL). The data-to-model dictionary is exactly the right place to record operator/airframe-specific interpretation decisions like this.
-- The parameter dictionary covers radalt, pitch/roll, glideslope/loc deviation, WoW, brakes, spoilers, T/R — the gaps explicitly listed in the v0.3 development note.
